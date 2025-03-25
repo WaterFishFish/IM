@@ -1,0 +1,15 @@
+database: mysql
+host: 0.0.0.0
+jwtauth:
+    accessexpire: 8640000
+    accesssecret: waterfish
+name: user
+port: 8888
+redisx:
+    host: 192.168.88.128:16379
+    pass: easy-chat
+userrpc:
+    etcd:
+        hosts:
+            - 192.168.88.128:3379
+        key: user.rpc

@@ -1,0 +1,19 @@
+Name: im.ws
+ListenOn: 0.0.0.0:10090
+
+JwtAuth:
+  AccessSecret: waterfish
+
+Mongo:
+  Url: "mongodb://root:easy-chat@192.168.88.128:47017"
+  Db: easy-chat
+
+MsgChatTransfer:
+  Topic: msgChatTransfer
+  Addrs:
+    - 192.168.88.128:9092
+
+MsgReadTransfer:
+  Topic: msgReadTransfer
+  Addrs:
+    - 192.168.88.128:9092
