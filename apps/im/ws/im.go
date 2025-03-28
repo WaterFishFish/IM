@@ -5,9 +5,8 @@ import (
 	"easy-chat/apps/im/ws/internal/handler"
 	"easy-chat/apps/im/ws/internal/svc"
 	"easy-chat/apps/im/ws/websocket"
-	"fmt"
-
 	"flag"
+	"fmt"
 	"github.com/zeromicro/go-zero/core/conf"
 )
 

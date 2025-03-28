@@ -1,22 +1,6 @@
 Name: im
 Host: 0.0.0.0
-Port: 8889
-
-SocialRpc:
-  Etcd:
-    Hosts:
-      - 192.168.88.128:3379
-    Key: social.rpc
-
-Redisx:
-  Host: 192.168.88.128:16379
-  Pass: easy-chat
-
-UserRpc:
-  Etcd:
-    Hosts:
-      - 192.168.88.128:3379
-    Key: user.rpc
+Port: 8882
 
 ImRpc:
   Etcd:
@@ -24,6 +8,17 @@ ImRpc:
       - 192.168.88.128:3379
     Key: im.rpc
 
+UserRpc:
+  Etcd:
+    Hosts:
+      - 192.168.88.128:3379
+    Key: user.rpc
+
+SocialRpc:
+  Etcd:
+    Hosts:
+      - 192.168.88.128:3379
+    Key: social.rpc
+
 JwtAuth:
   AccessSecret: waterfish
-#  AccessExpire: 8640000

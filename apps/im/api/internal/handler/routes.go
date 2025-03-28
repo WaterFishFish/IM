@@ -21,4 +21,35 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 		rest.WithJwt(serverCtx.Config.JwtAuth.AccessSecret),
 		rest.WithPrefix("/v1/im"),
 	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				// 根据用户获取聊天记录
+				Method:  http.MethodGet,
+				Path:    "/chatlog",
+				Handler: getChatLogHandler(serverCtx),
+			},
+			{
+				// 获取会话
+				Method:  http.MethodGet,
+				Path:    "/conversation",
+				Handler: getConversationsHandler(serverCtx),
+			},
+			{
+				// 更新会话
+				Method:  http.MethodPut,
+				Path:    "/conversation",
+				Handler: putConversationsHandler(serverCtx),
+			},
+			{
+				// 建立会话
+				Method:  http.MethodPost,
+				Path:    "/setup/conversation",
+				Handler: setUpUserConversationHandler(serverCtx),
+			},
+		},
+		rest.WithJwt(serverCtx.Config.JwtAuth.AccessSecret),
+		rest.WithPrefix("/v1/im"),
+	)
 }
