@@ -31,6 +31,11 @@ func (l *GetChatLogLogic) GetChatLog(req *types.ChatLogReq) (resp *types.ChatLog
 	// 打印传入参数
 	log.Printf("API 请求参数: %+v", req)
 
+	// 转换纳秒到毫秒
+	req.StartSendTime /= 1e6
+	req.EndSendTime /= 1e6
+
+	// 调用 RPC 获取数据
 	data, err := l.svcCtx.GetChatLog(l.ctx, &imclient.GetChatLogReq{
 		ConversationId: req.ConversationId,
 		StartSendTime:  req.StartSendTime,

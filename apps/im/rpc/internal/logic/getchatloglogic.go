@@ -4,6 +4,7 @@ import (
 	"context"
 	"easy-chat/pkg/xerr"
 	"github.com/pkg/errors"
+	"log"
 
 	"easy-chat/apps/im/rpc/im"
 	"easy-chat/apps/im/rpc/internal/svc"
@@ -55,9 +56,10 @@ func (l *GetChatLogLogic) GetChatLog(in *im.GetChatLogReq) (*im.GetChatLogResp, 
 	// 时间段分段查询
 	data, err := l.svcCtx.ChatLogModel.ListBySendTime(l.ctx, in.ConversationId, in.StartSendTime, in.EndSendTime, in.Count)
 	if err != nil {
+		log.Printf("数据库查询失败: %v", err)
 		return nil, errors.Wrapf(xerr.NewDBErr(), "ListBySendTime err %v, req %v", err, in)
 	}
-
+	log.Printf("数据库查询结果: %+v", data) // 确认数据库是否有数据
 	res := make([]*im.ChatLog, 0, len(data))
 	for _, datum := range data {
 		res = append(res, &im.ChatLog{
