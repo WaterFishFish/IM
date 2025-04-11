@@ -76,7 +76,14 @@ func (s *Server) ServerWs(w http.ResponseWriter, r *http.Request) {
 			s.Errorf("server handler ws recover err %v", r)
 		}
 	}()
-
+	if r.Method == http.MethodOptions {
+		// 设置CORS响应头
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With")
+		w.WriteHeader(http.StatusOK)
+		return
+	}
 	conn := NewConn(s, w, r)
 	if conn == nil {
 		return

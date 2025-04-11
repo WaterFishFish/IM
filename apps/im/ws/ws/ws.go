@@ -7,6 +7,8 @@ type (
 		MsgId           string            `mapstructure:"msgId"`
 		ReadRecords     map[string]string `mapstructure:"readRecords"`
 		constants.MType `mapstructure:"mType"`
+		FileName        string `mapstructure:"fileName,omitempty"` // 文件名（图片或文件）
+		FileSize        int64  `mapstructure:"fileSize,omitempty"` // 文件大小（单位: byte）
 		Content         string `mapstructure:"content"`
 	}
 
@@ -32,6 +34,8 @@ type (
 		ContentType     constants.ContentType `mapstructure:"contentType"`
 		constants.MType `mapstructure:"mType"`
 		Content         string `mapstructure:"content"`
+		FileName        string `json:"fileName,omitempty" mapstructure:"fileName,omitempty"`
+		FileSize        int64  `json:"fileSize,omitempty" mapstructure:"fileSize,omitempty"`
 	}
 	MarkRead struct {
 		constants.ChatType `mapstructure:"chatType"`

@@ -44,6 +44,9 @@ func single(srv *websocket.Server, data *ws.Push, recvId string) error {
 			MsgId:       data.MsgId,
 			MType:       data.MType,
 			Content:     data.Content,
+
+			FileName: data.FileName,
+			FileSize: data.FileSize,
 		},
 	}), rconn)
 }

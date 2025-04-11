@@ -13,11 +13,13 @@ type ChatLog struct {
 }
 
 type ChatLogReq struct {
-	ConversationId string `json:"conversationId"`
-	StartSendTime  int64  `json:"startSendTime,omitempty"`
-	EndSendTime    int64  `json:"endSendTime,omitempty"`
-	Count          int64  `json:"count,omitempty"`
+	ConversationId string `json:"conversationId" query:"conversationId"`
+	StartSendTime  int64  `json:"startSendTime,omitempty" query:"startSendTime"`
+	EndSendTime    int64  `json:"endSendTime,omitempty" query:"endSendTime"`
+	Count          int64  `json:"count,omitempty" query:"count"`
 }
+
+
 
 type ChatLogResp struct {
 	List []*ChatLog `json:"list"`

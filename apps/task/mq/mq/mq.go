@@ -13,6 +13,8 @@ type MsgChatTransfer struct {
 
 	constants.MType `json:"mType"`
 	Content         string `json:"content"`
+	FileName        string `json:"fileName,omitempty" mapstructure:"fileName,omitempty"`
+	FileSize        int64  `json:"fileSize,omitempty" mapstructure:"fileSize,omitempty"`
 }
 type MsgMarkRead struct {
 	constants.ChatType `json:"chatType"`

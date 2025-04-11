@@ -26,13 +26,13 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 		[]rest.Route{
 			{
 				// 根据用户获取聊天记录
-				Method:  http.MethodGet,
+				Method:  http.MethodPost,
 				Path:    "/chatlog",
 				Handler: getChatLogHandler(serverCtx),
 			},
 			{
 				// 获取会话
-				Method:  http.MethodGet,
+				Method:  http.MethodPost,
 				Path:    "/conversation",
 				Handler: getConversationsHandler(serverCtx),
 			},

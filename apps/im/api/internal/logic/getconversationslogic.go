@@ -5,6 +5,7 @@ import (
 	"easy-chat/apps/im/rpc/imclient"
 	"easy-chat/pkg/ctxdata"
 	"github.com/jinzhu/copier"
+	"log"
 
 	"easy-chat/apps/im/api/internal/svc"
 	"easy-chat/apps/im/api/internal/types"
@@ -30,10 +31,11 @@ func NewGetConversationsLogic(ctx context.Context, svcCtx *svc.ServiceContext) *
 func (l *GetConversationsLogic) GetConversations(req *types.GetConversationsReq) (resp *types.GetConversationsResp, err error) {
 	// todo: add your logic here and delete this line
 	uid := ctxdata.GetUid(l.ctx)
-
+	log.Printf("UID: %s", uid)
 	data, err := l.svcCtx.GetConversations(l.ctx, &imclient.GetConversationsReq{
 		UserId: uid,
 	})
+	log.Printf("GetConversations response data: %+v", data)
 
 	if err != nil {
 		return nil, err
